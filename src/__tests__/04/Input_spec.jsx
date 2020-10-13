@@ -40,4 +40,14 @@ describe('<Input>', () => {
   //expect(wrapper.length).toEqual(1);
   //expect(wrapper).toHaveLength(1);
   //});
+
+  it('calls back onChange on input change', () => {
+    const changeStub = jest.fn(); //감시함수 fn()을 제공하여 생성된 함수의 호출을 감시하는 방법을 제공
+    const wrapper = shallow(<Input name="test_name" onChange={changeStub} />); //생성된 감시 함수를 입력 컴포넌트의 onChange프로퍼티에 할당
+    expect(changeStub).not.toHaveBeenCalled();
+    const expectedTargetValue = 'updated input';
+    wrapper.find('input').simulate('change', { target: { value: expectedTargetValue } }); //재현메소드 이용하여 input 값이 변경되는 이벤트 재현
+    expect(changeStub).toHaveBeenCalledTimes(1); //호출검증 메소드 - 호출 횟수
+    expect(changeStub).toHaveBeenCalledWith('test_name', expectedTargetValue); //호출검증 메소드 - 호출 인자
+  });
 });
