@@ -17,7 +17,7 @@ class InlineList extends PureComponent {
           verticalAlign === 'bottom' && styles.verticalAlignBottom,
         )}
       >
-        {React.Children.map(children, child => (
+        {React.Children.map(children, (child) => (
           <div {...css({ marginRight: spacingBetween * unit })}>{child}</div>
         ))}
       </div>

@@ -69,6 +69,13 @@ class Select extends PureComponent {
           )}
         >
           <select
+            {...css(
+              styles.select,
+              xsmall && styles.xsmall,
+              small && styles.small,
+              large && styles.large,
+              xlarge && styles.xlarge,
+            )}
             disabled={disabled}
             id={`input_${name}`}
             ref={this.setRef}
@@ -77,7 +84,7 @@ class Select extends PureComponent {
             onBlur={this.handleBlur}
             value={value}
           >
-            {React.Children.map(children, child => React.cloneElement(child, { disabled }))}
+            {React.Children.map(children, (child) => React.cloneElement(child, { disabled }))}
           </select>
         </div>
       </fieldset>
@@ -119,7 +126,7 @@ export default withStyles(({ depth, unit, color, size, lineHeight }) => ({
     borderColor: color.primary,
     borderStyle: 'solid',
     borderRadius: 4,
-    padding: unit * 3,
+    padding: unit * 1.5,
   },
   focus: {
     boxShadow: '0 0 0px 2px rgba(0, 0, 0, 0.3)',
