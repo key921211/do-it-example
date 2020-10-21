@@ -4,13 +4,13 @@ import reducers from '../reducers';
 import thunk from 'redux-thunk';
 
 
-const customMiddleware = store => nextRunner => action => {
-    console.log('미들웨어에 전달된 액션 객체', action); 
-    console.log('리듀서 실행 전', store.getState()); 
-    const result = nextRunner(action);
-    console.log('리듀서 실행 후', store.getState());
-    return result;
-}
+// const customMiddleware = store => nextRunner => action => {
+//     console.log('미들웨어에 전달된 액션 객체', action); 
+//     console.log('리듀서 실행 전', store.getState()); 
+//     const result = nextRunner(action);
+//     console.log('리듀서 실행 후', store.getState());
+//     return result;
+// }
 // const customMiddleware1 = () => nextRunner => action => {
 //     if(action.type === SET_TRANSACTION_LIST) {
 //         return nextRunner({
@@ -27,13 +27,13 @@ const customMiddleware = store => nextRunner => action => {
 //     }
 //     return nextRunner(action);
 // }
-const customMiddleware2 = store => nextRunner => action => {
-    console.log('미들웨어2 전달된 액션 객체', action);
-    console.log('미들웨어2 실행 전', store.getState());
-    const result = nextRunner(action);
-    console.log('미들웨어2 실행 후', store.getState());
-    return  result;
-}
+// const customMiddleware2 = store => nextRunner => action => {
+//     console.log('미들웨어2 전달된 액션 객체', action);
+//     console.log('미들웨어2 실행 전', store.getState());
+//     const result = nextRunner(action);
+//     console.log('미들웨어2 실행 후', store.getState());
+//     return  result;
+// }
 export default initStates => createStore(
     combineReducers(reducers),
     initStates,

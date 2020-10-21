@@ -48,34 +48,3 @@ const formula1 = x => addFour(multiplyThree1(multiplyTwo1(x)));
 console.log(multiplyTwo1(6));
 console.log(multiplyThree1(6));
 console.log(formula1(4));
-
-//compose()
-function compose(funcArr) {
-  return funcArr.reduce(
-    function(prevFunc, nextFunc) {
-      return function(value) {
-        return nextFunc(prevFunc(value));
-      };
-    },
-    function(k) {
-      return k;
-    },
-  );
-}
-const flrmulaWithCompose = compse([multiplyTwo1, multiplyThree1, addFour]);
-
-//배열함수 slice를 사용하여 나열형자료를 배열형태로 변환
-function compose() {
-  const funcArr = Array.prototype.slice.call(arguments);
-  return funcArr.reduce(
-    function(prevFunc, nextFunc) {
-      return function(value) {
-        return nextFunc(prevFunc(value));
-      };
-    },
-    function(k) {
-      return k;
-    },
-  );
-}
-const formulaWithCompose = compose(multiplyTwo1, multiplyThree1, addFour);

@@ -2,14 +2,15 @@ import React, { PureComponent } from 'react';
 //import axios from 'axios';
 import Heading from '../../../doit-ui/Heading';
 import Card from '../../../doit-ui/Card';
-import Api from '../../Api';
+//import Api from '../../Api';
 //import TransactionSearchFilter from './TransactionSearchFilter';
 import TransactionSearchFilterContainer from '../../containers/main/TransactionSearchFilterContainer';
 import TransactionTable from './TransactionTable';
 
 class TransactionList extends PureComponent {
   componentDidMount() {
-    Api.get('/transactions').then(({ data }) => this.props.setTransactionList(data));
+    //  Api.get('/transactions').then(({ data }) => this.props.setTransactionList(data));
+    this.props.requestTransactionList();
   }
   render() {
     const { transactions } = this.props;
@@ -29,7 +30,8 @@ class TransactionList extends PureComponent {
 
 TransactionList.defaultProps = {
   transactions: [],
-  setTransactionList: () => {},
+  //setTransactionList: () => {},
+  requestTransactionList: () => {},
 };
 
 export default TransactionList;
