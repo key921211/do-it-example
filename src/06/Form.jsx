@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Provider } from './FormContext';
 
-export default class FormProvider extends React.Component {
+class FormProvider extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +37,7 @@ export default class FormProvider extends React.Component {
     if (!validate) {
       return;
     }
-    const errors = validate(values); //8. 폼 공급자는 유효성 검사 로직을 포함하지 않고 validate프로퍼티로 전달된 콜백 함수를 실행하여 유효성 오류 결과값만을 저장
+    const errors = this.props.validate(values); //8. 폼 공급자는 유효성 검사 로직을 포함하지 않고 validate프로퍼티로 전달된 콜백 함수를 실행하여 유효성 오류 결과값만을 저장
     this.setState({
       errors, //9. 유효성 검증의 오류 메시지를 컨텍스트의 errors에 저장
     });
@@ -62,6 +62,10 @@ export default class FormProvider extends React.Component {
 
 FormProvider.propTypes = {
   validate: PropTypes.func,
+  onSubmit: PropTypes.func.isRequired,
 };
 
+FormProvider.defaultProps = {
+  validate: () => ({}),
+};
 export default FormProvider;
