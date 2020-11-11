@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   const { ids, entities } = state.transactions;
   const transactions = ids.map((id) => entities[id]);
 
-  return { transactions };
+  return { transactions, loading };
 };
 const mapDispatchToProps = {
   //setTransactionList,

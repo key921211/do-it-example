@@ -5,10 +5,10 @@ import AppLayout from './components/AppLayout';
 import CoinOverview from './components/main/CoinOverview';
 import TransactionList from './components/main/TransactionList';
 import configureStore from './store/configureStore';
-
 //import MainPage from './components/main/MainPage';
-
 import ModalProvider from './ModalProvider';
+//import NotificationContainer from './containers/main/NotificationContainer';
+import NotificationContainer from './containers/NotificationContainer';
 
 class CoinApp extends PureComponent {
   store = configureStore();
@@ -20,6 +20,7 @@ class CoinApp extends PureComponent {
           <AppLayout>
             <CoinOverview />
             <TransactionList />
+            <NotificationContainer />
           </AppLayout>
         </ModalProvider>
       </Provider>

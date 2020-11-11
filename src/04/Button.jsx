@@ -11,7 +11,7 @@ class Button extends PureComponent {
       large,
       xlarge,
       small,
-      xsamll,
+      xsmall,
       primary,
       secondary,
       onPress,
@@ -20,13 +20,14 @@ class Button extends PureComponent {
       <button
         {...css(
           styles.default,
-          xsamll && styles.xsamll,
+          xsmall && styles.xsmall,
           small && styles.small,
           large && styles.large,
           xlarge && styles.xlarge,
           secondary && styles.secondary,
           primary && styles.primary,
         )}
+        disabled={disabled}
         onClick={onPress}
       >
         {children}
@@ -37,6 +38,7 @@ class Button extends PureComponent {
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
+  disabled: PropTypes.bool,
   xsmall: PropTypes.bool,
   small: PropTypes.bool,
   large: PropTypes.bool,
@@ -45,7 +47,6 @@ Button.propTypes = {
   primary: PropTypes.bool,
   onPress: PropTypes.func,
 };
-
 Button.defaultProps = {
   onPress: () => {},
   xsmall: false,
@@ -55,6 +56,7 @@ Button.defaultProps = {
   secondary: false,
   primary: false,
 };
+
 export default withStyles(({ color, size, unit, responsive }) => ({
   default: {
     border: 1,
@@ -67,7 +69,10 @@ export default withStyles(({ color, size, unit, responsive }) => ({
     cursor: 'pointer',
     [responsive.small]: {
       width: '100%',
-    }
+    },
+  },
+  fullWidth: {
+    width: '100%',
   },
   xlarge: {
     fontSize: size.xg,

@@ -15,12 +15,7 @@ class Input extends PureComponent {
   }
   componentDidMount() {
     if (this.props.autoFocus) {
-      this.refs.focus(); //autoFocus 값이 true일 경우 출력 후 input박스에 자동으로 커서 배치
-    }
-  }
-  componentDidUpdate() {
-    if (this.props.autoFocus) {
-      this.refs.focus(); //autoFocus 값이 true일 경우 출력 후 input박스에 자동으로 커서 배치
+      this.ref.focus(); //autoFocus 값이 true일 경우 출력 후 input박스에 자동으로 커서 배치
     }
   }
   setRef(ref) {
@@ -38,10 +33,14 @@ class Input extends PureComponent {
           onChange={this.handleChange}
           value={value}
         />
-        <label className="active" for={`input_${name}`}>
+        <label className="active" htmlFor={`input_${name}`}>
           {label}
         </label>
-        {errorMessage && <span className="helper-text">{errorMessage}</span>}
+        {errorMessage && (
+          <span className="helper-text" data-error={errorMessage}>
+            {errorMessage}
+          </span>
+        )}
       </div>
     );
   }
@@ -54,14 +53,11 @@ Input.propTypes = {
   errorMessage: PropTypes.string,
   label: PropTypes.string,
   onChange: PropTypes.func,
-  onFocus: PropTypes.func,
   autoFocus: PropTypes.bool,
 };
 Input.defaultProps = {
   onChange: () => {},
-  onFocus: () => {},
   autoFocus: false,
   type: 'text', //기본 타입은 'text'
-  name: 'test',
 };
 export default Input;

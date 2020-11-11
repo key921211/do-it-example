@@ -18,7 +18,7 @@
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.7",
+    "react-scripts": "^3.4.1",
     "react-test-renderer": "^16.13.1",
     "react-with-styles": "^4.1.0",
     "react-with-styles-interface-aphrodite": "^6.0.1",
@@ -37,6 +37,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "mockserver": "json-server --watch --delay 500 --port 4000 mock/db.json",
+    "errorserver": "node mock/fake.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -67,8 +68,9 @@
     "@storybook/addon-actions": "^6.0.26",
     "@storybook/addons": "^6.0.26",
     "@storybook/react": "^6.0.21",
-    "sass-loader": "^10.0.2",
-    "storybook-addon-jsx": "^7.3.4"
+    "sass-loader": "^10.0.5",
+    "storybook-addon-jsx": "^7.3.4",
+    "style-loader": "^2.0.0"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",

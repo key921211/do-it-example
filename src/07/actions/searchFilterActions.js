@@ -12,3 +12,7 @@ export const setFilter = (filterName, value) => ({
 export const resetFilter = () => ({
     type: RESET_FILTER,
 })
+
+export const setNameFilter = name => setFilter('name', name);
+export const setAgeFilter = age => setFilter('age', age);
+export const setIdFilter = id => setFilter('id', id);
